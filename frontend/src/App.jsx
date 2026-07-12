@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { ThemeProvider } from './context/ThemeContext'
 import { AuthProvider } from './context/AuthContext'
 import RequireAuth from './components/RequireAuth'
 import Navbar from './components/Navbar'
@@ -14,23 +15,25 @@ import Register from './pages/Register'
 
 export default function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <div className="min-h-screen bg-gray-50">
-          <Navbar />
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/" element={<RequireAuth><Dashboard /></RequireAuth>} />
-            <Route path="/vehicles" element={<RequireAuth><Vehicles /></RequireAuth>} />
-            <Route path="/drivers" element={<RequireAuth><Drivers /></RequireAuth>} />
-            <Route path="/trips" element={<RequireAuth><Trips /></RequireAuth>} />
-            <Route path="/maintenance" element={<RequireAuth><Maintenance /></RequireAuth>} />
-            <Route path="/fuel-expenses" element={<RequireAuth><FuelExpenses /></RequireAuth>} />
-            <Route path="/reports" element={<RequireAuth><Reports /></RequireAuth>} />
-          </Routes>
-        </div>
-      </BrowserRouter>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <BrowserRouter>
+          <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
+            <Navbar />
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/" element={<RequireAuth><Dashboard /></RequireAuth>} />
+              <Route path="/vehicles" element={<RequireAuth><Vehicles /></RequireAuth>} />
+              <Route path="/drivers" element={<RequireAuth><Drivers /></RequireAuth>} />
+              <Route path="/trips" element={<RequireAuth><Trips /></RequireAuth>} />
+              <Route path="/maintenance" element={<RequireAuth><Maintenance /></RequireAuth>} />
+              <Route path="/fuel-expenses" element={<RequireAuth><FuelExpenses /></RequireAuth>} />
+              <Route path="/reports" element={<RequireAuth><Reports /></RequireAuth>} />
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </AuthProvider>
+    </ThemeProvider>
   )
 }
