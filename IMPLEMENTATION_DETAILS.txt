@@ -1,0 +1,43 @@
+TransitOps Implementation Details
+
+This file describes selected implementation areas in the repository.
+
+1. Authentication and RBAC
+- Backend: Django REST Framework with token authentication.
+- Roles: Fleet Manager, Driver, Safety Officer, Financial Analyst.
+- Access control is enforced through view-level permission checks and role fields on the user model.
+
+2. Vehicles and Drivers
+- CRUD endpoints for vehicles and drivers with validation logic.
+- Unique vehicle registration numbers are enforced.
+- Driver assignment logic checks license expiration and status.
+- Vehicle status transitions include Available, On Trip, In Shop, and Retired.
+
+3. Trip Management
+- Trip creation validates cargo weight against vehicle capacity.
+- Dispatch action updates both vehicle and driver status to On Trip.
+- Complete action updates vehicle and driver back to Available and records trip completion metrics.
+- Cancel action restores the vehicle and driver status when a dispatched trip is cancelled.
+
+4. Maintenance Workflow
+- Creating maintenance records auto-sets the related vehicle status to In Shop.
+- Closing maintenance records returns the vehicle to Available unless the vehicle is Retired.
+- Vehicles under maintenance are excluded from dispatch and assignment pools.
+
+5. Fuel and Expense Tracking
+- Fuel logs are created when trips are completed with fuel consumed and cost data.
+- Expense records support financial tracking for fleet operations.
+- Reports aggregate these metrics to support operational and financial analytics.
+
+6. Dashboard and Reporting
+- Dashboard endpoint returns KPIs such as active vehicles, pending trips, and fleet utilization.
+- Reports endpoint supports CSV export for download.
+- Frontend pages visualize fleet state, trip status, maintenance items, and expense summaries.
+
+7. Frontend Architecture
+- React + Vite app with a component-based UI.
+- Tailwind CSS for responsive styling.
+- Context providers for authentication and theming.
+- Pages include Dashboard, Vehicles, Drivers, Trips, Maintenance, Fuel Expenses, and Reports.
+
+These notes are intended to help developers understand the core implementation and business rules in TransitOps.
