@@ -10,6 +10,7 @@ import Maintenance from './pages/Maintenance'
 import Reports from './pages/Reports'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import FuelExpenses from './pages/FuelExpenses'
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
             <Route path="/trips" element={<RequireAuth><Trips /></RequireAuth>} />
             <Route path="/maintenance" element={<RequireAuth><Maintenance /></RequireAuth>} />
             <Route path="/reports" element={<RequireAuth><Reports /></RequireAuth>} />
+            <Route path="/fuel-expenses" element={<RequireAuth><FuelExpenses /></RequireAuth>} />
           </Routes>
         </div>
       </BrowserRouter>

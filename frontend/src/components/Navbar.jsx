@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { to: '/trips', label: 'Trips' },
   { to: '/maintenance', label: 'Maintenance' },
   { to: '/reports', label: 'Reports' },
+  { to: '/fuel-expenses', label: 'Fuel & Expenses' },
 ]
 
 export default function Navbar() {
