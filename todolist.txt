@@ -1,0 +1,19 @@
+TransitOps is a smart transport management platform that digitizes fleet and logistics operations. �
+TransitOps Smart Transport Operations Platform.pdf
+It helps organizations manage vehicles, drivers, trips, maintenance, fuel, and expenses in one system. �
+TransitOps Smart Transport Operations Platform.pdf
+The platform provides secure login with Role-Based Access Control (RBAC) for different users. �
+TransitOps Smart Transport Operations Platform.pdf
+It includes a dashboard displaying key metrics like active vehicles, active trips, and fleet utilization. �
+TransitOps Smart Transport Operations Platform.pdf
+Vehicle records store details such as registration number, model, capacity, odometer, and status. �
+TransitOps Smart Transport Operations Platform.pdf
+Driver management tracks license validity, safety scores, contact details, and availability. �
+TransitOps Smart Transport Operations Platform.pdf
+The system validates trips by checking vehicle capacity, driver eligibility, and availability before dispatch. �
+TransitOps Smart Transport Operations Platform.pdf
+Maintenance records automatically update vehicle status and prevent unavailable vehicles from being assigned. �
+TransitOps Smart Transport Operations Platform.pdf
+Fuel logs and expenses are recorded to calculate operational costs, fuel efficiency, and vehicle ROI. �
+TransitOps Smart Transport Operations Platform.pdf
+TransitOps improves transport efficiency, reduces manual work, and provides real-time operational insights through reports and analytics
