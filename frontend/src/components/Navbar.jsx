@@ -1,6 +1,7 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { useTheme } from '../context/ThemeContext'
+import { canAccessRoute } from '../config/permissions'
 import Button from './Button'
 
 const NAV_LINKS = [
@@ -19,6 +20,8 @@ export default function Navbar() {
   const navigate = useNavigate()
   const location = useLocation()
 
+  const visibleLinks = user ? NAV_LINKS.filter((link) => canAccessRoute(user.role, link.to)) : []
+
   return (
     <nav className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,7 +32,7 @@ export default function Navbar() {
             </Link>
             {user && (
               <div className="hidden lg:flex gap-1">
-                {NAV_LINKS.map((link) => (
+                {visibleLinks.map((link) => (
                   <Link
                     key={link.to}
                     to={link.to}

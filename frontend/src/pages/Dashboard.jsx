@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import client from '../api/client'
+import { useAuth } from '../context/AuthContext'
+import { QUICK_ACTIONS } from '../config/permissions'
 import PageContainer from '../components/PageContainer'
 import Button from '../components/Button'
 import { SkeletonCard } from '../components/Skeleton'
@@ -37,6 +39,9 @@ export default function Dashboard() {
   const [trips, setTrips] = useState([])
   const [error, setError] = useState('')
   const navigate = useNavigate()
+  const { user } = useAuth()
+
+  const allowedActions = QUICK_ACTIONS[user?.role] || []
 
   useEffect(() => {
     Promise.all([
@@ -104,15 +109,25 @@ export default function Dashboard() {
         </div>
 
         {/* Quick actions */}
-        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
-          <h3 className="font-semibold text-gray-900 mb-4">Quick Actions</h3>
-          <div className="grid grid-cols-2 gap-2">
-            <Button variant="secondary" onClick={() => navigate('/vehicles')}>+ Vehicle</Button>
-            <Button variant="secondary" onClick={() => navigate('/drivers')}>+ Driver</Button>
-            <Button variant="secondary" onClick={() => navigate('/trips')}>⚡ Dispatch</Button>
-            <Button variant="secondary" onClick={() => navigate('/fuel-expenses')}>⛽ Expense</Button>
+        {allowedActions.length > 0 && (
+          <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+            <h3 className="font-semibold text-gray-900 mb-4">Quick Actions</h3>
+            <div className="grid grid-cols-2 gap-2">
+              {allowedActions.includes('vehicle') && (
+                <Button variant="secondary" onClick={() => navigate('/vehicles')}>+ Vehicle</Button>
+              )}
+              {allowedActions.includes('driver') && (
+                <Button variant="secondary" onClick={() => navigate('/drivers')}>+ Driver</Button>
+              )}
+              {allowedActions.includes('dispatch') && (
+                <Button variant="secondary" onClick={() => navigate('/trips')}>⚡ Dispatch</Button>
+              )}
+              {allowedActions.includes('expense') && (
+                <Button variant="secondary" onClick={() => navigate('/fuel-expenses')}>⛽ Expense</Button>
+              )}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Recent activity */}
         <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">

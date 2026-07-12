@@ -23,13 +23,13 @@ export default function App() {
             <Routes>
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-              <Route path="/" element={<RequireAuth><Dashboard /></RequireAuth>} />
-              <Route path="/vehicles" element={<RequireAuth><Vehicles /></RequireAuth>} />
-              <Route path="/drivers" element={<RequireAuth><Drivers /></RequireAuth>} />
-              <Route path="/trips" element={<RequireAuth><Trips /></RequireAuth>} />
-              <Route path="/maintenance" element={<RequireAuth><Maintenance /></RequireAuth>} />
-              <Route path="/fuel-expenses" element={<RequireAuth><FuelExpenses /></RequireAuth>} />
-              <Route path="/reports" element={<RequireAuth><Reports /></RequireAuth>} />
+              <Route path="/" element={<RequireAuth path="/"><Dashboard /></RequireAuth>} />
+              <Route path="/vehicles" element={<RequireAuth path="/vehicles"><Vehicles /></RequireAuth>} />
+              <Route path="/drivers" element={<RequireAuth path="/drivers"><Drivers /></RequireAuth>} />
+              <Route path="/trips" element={<RequireAuth path="/trips"><Trips /></RequireAuth>} />
+              <Route path="/maintenance" element={<RequireAuth path="/maintenance"><Maintenance /></RequireAuth>} />
+              <Route path="/fuel-expenses" element={<RequireAuth path="/fuel-expenses"><FuelExpenses /></RequireAuth>} />
+              <Route path="/reports" element={<RequireAuth path="/reports"><Reports /></RequireAuth>} />
             </Routes>
           </div>
         </BrowserRouter>
